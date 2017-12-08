@@ -7,7 +7,6 @@ import store from '../store'
 import {connect} from 'react-redux'
 
 function Students (props) {
-  console.log('in STudents', props)
     return (
       <div>
         <h3>
@@ -32,8 +31,6 @@ function Students (props) {
         </table>
       </div>
     )
-
-
 }
 
 const mapStateToProps = (state) => {

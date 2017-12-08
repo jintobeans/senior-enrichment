@@ -41,11 +41,16 @@ campusRouter.post('/', (req, res, next) => {
 
 //PUT /api/campuses/:campusid
 campusRouter.put('/:campusid', (req, res, next) => {
-	Campuses.findById(req.params.campusid)
-	.then( campus => {
-		return campus.update(req.body)
+	Campuses.update(req.body, {
+		where: {
+			id: req.params.campusid
+		},
+		returning: true,
+		plain: true
 	})
-	.then(campus => res.json(campus))
+	.spread((affected, updatedCampus) => {
+		res.json(updatedCampus)
+	})
 	.catch(next)
 })
 

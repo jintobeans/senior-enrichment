@@ -12,7 +12,9 @@ studentsRouter.get('/', (req, res, next) => {
 			as: 'Campus'
 		}]
 	})
-	.then(students => res.send(students))
+	.then(students => {
+		console.log('students', students)
+		res.send(students)})
 	.catch(next)
 	})
 

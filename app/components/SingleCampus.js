@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 
-export default class SingleCampus extends Component {
+class SingleCampus extends Component {
   constructor(){
     super()
     this.state = {
@@ -35,3 +36,10 @@ export default class SingleCampus extends Component {
     )
   }
 }
+
+const mapStateToProps = null;
+const mapDispatchToProps = null;
+
+const SingleCampusContainer = connect(mapStateToProps, mapDispatchToProps)(SingleCampus)
+
+export default SingleCampusContainer;

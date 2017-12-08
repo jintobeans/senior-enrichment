@@ -13,6 +13,7 @@ class StudentItem extends Component {
 
   render(){
     const student = this.props.student;
+    console.log('student',student)
     return (
       <tr>
           <th>
@@ -30,7 +31,7 @@ class StudentItem extends Component {
           </th>
           <th>
             <button onClick={this.deleteHandler}>
-            x
+            delete student
             </button>
           </th>
       </tr>

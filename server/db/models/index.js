@@ -12,7 +12,10 @@ const Campuses = require('./Campuses');
 // This is also probably a good place for you to set up your associations
 
 Students.belongsTo(Campuses, {as: 'Campus'});
-// Campuses.hasMany(Students); //is this necessary...
+Campuses.hasMany(Students, {
+	foreignKey: 'CampusId',
+	onDelete: 'cascade',
+	hooks: true}); //is this necessary...
 
 module.exports = {
 	db,

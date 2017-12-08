@@ -22,16 +22,12 @@ class SingleStudent extends Component{
     this.setState({
       student: this.props.student
     })
-    console.log('props1',this.props)
-    console.log('state1',this.state)
   }
 
   componentWillReceiveProps (newProps, oldProps) {
     this.setState({
       student: newProps.student
     })
-    console.log('props2',this.props)
-    console.log('state2',this.state)
   }
 
   updateStudent(studentUpdateObj){
@@ -41,7 +37,6 @@ class SingleStudent extends Component{
       student: Object.assign(student, studentUpdateObj)
     })
     // change database
-    console.log('stud', student)
     this.props.put({
       firstName: student.firstName,
       lastName: student.lastName,
@@ -50,14 +45,13 @@ class SingleStudent extends Component{
       campusId: +student.CampusId,
       id: student.id
     })
-    // this.setState({student: updatedStudent})
   }
 
   render() {
     const {student} = this.state
     return (
       <div>
-        <h1>'single student view for {student.fullName}'</h1>
+        <h2>'Edit information for {student.fullName}'</h2>
         <ul>
           <li>
             First Name:
