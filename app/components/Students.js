@@ -16,13 +16,21 @@ function Students (props) {
         <NavLink to="/addstudent" >
           <button>Add Student</button>
         </NavLink>
-
+        <table>
+          <tbody>
+            <tr>
+              <th>Student Id</th>
+              <th>Full Name</th>
+              <th>Campus</th>
+            </tr>
         {props.students.map((student) => {
           console.log('student:', student)
           return (
             <StudentItem key={student.id} student={student} />
           )
         })}
+          </tbody>
+        </table>
       </div>
     )
 

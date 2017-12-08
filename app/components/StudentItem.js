@@ -14,22 +14,26 @@ class StudentItem extends Component {
   render(){
     const student = this.props.student;
     return (
-      <div>
-        Information about:
-        {student.id}
-        {student.fullName}
-        <div>
-        <NavLink to={`/students/${student.id}`}>
-          <h4>{student.fullName}</h4>
-        </NavLink>
-        <NavLink to={`/campuses/${student.CampusId}`}>
-          <h4>{student.Campus.name}</h4>
-        </NavLink>
-        </div>
-        <button onClick={this.deleteHandler}>
-        x
-        </button>
-      </div>
+      <tr>
+          <th>
+            {student.id}
+          </th>
+          <th>
+            <NavLink to={`/students/${student.id}`}>
+              <h4>{student.fullName}</h4>
+            </NavLink>
+          </th>
+          <th>
+            <NavLink to={`/campuses/${student.CampusId}`}>
+              <h4>{student.Campus.name}</h4>
+            </NavLink>
+          </th>
+          <th>
+            <button onClick={this.deleteHandler}>
+            x
+            </button>
+          </th>
+      </tr>
     )
 
   }
