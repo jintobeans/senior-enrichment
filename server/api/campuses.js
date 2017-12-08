@@ -1,5 +1,6 @@
 const campusRouter = require('express').Router()
 const Campuses = require('../db/models').Campuses
+const Students = require('../db/models').Students
 module.exports = campusRouter
 
 //GET api/campuses
@@ -10,14 +11,15 @@ campusRouter.get('/', (req, res, next) => {
 })
 
 //GET /api/campuses/:campusid
+//find all students that have that campus ID
 campusRouter.get('/:campusid', (req, res, next) => {
 	let campusid = req.params.campusid;
-	Campuses.findOne({
+	Students.findAll({
 		where: {
-			id: campusid
+			CampusId: campusid
 		}
 	})
-	.then(campus => res.send(campus))
+	.then(students => res.send(students))
 	.catch(next)
 	})
 

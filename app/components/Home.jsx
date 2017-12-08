@@ -7,7 +7,9 @@ export default class Home extends Component {
   render(){
     return (
       <div>
-      I'm home
+        <h3>
+          Welcome to the Margaret Hamilton Interplanetary Academy of JavaScript.
+        </h3>
       </div>
     )
   }

@@ -1,11 +1,17 @@
 const express = require('express')
 const studentsRouter = express.Router()
 const Students = require('../db/models').Students
+const Campuses = require('../db/models').Campuses
 module.exports = studentsRouter
 
 //GET /api/students
 studentsRouter.get('/', (req, res, next) => {
-	Students.findAll()
+	Students.findAll({
+		include: [{
+			model: Campuses,
+			as: 'Campus'
+		}]
+	})
 	.then(students => res.send(students))
 	.catch(next)
 	})
@@ -45,11 +51,14 @@ studentsRouter.post('/', (req, res, next) => {
 
 //PUT /api/students/:studentid
 studentsRouter.put('/:studentid', (req, res, next) => {
-	Students.findById(req.params.studentid)
-	.then( student => {
-		res.redirect(`/${student.id}`)
-		return student.update(req.body)
+	Students.update(req.body, {
+		where: {
+			id: req.params.studentid
+		},
+		returning: true,
+		plain: true
 	})
+	.then(result => res.send(result[1]))
 	.catch(next)
 })
 
