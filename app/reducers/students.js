@@ -64,11 +64,14 @@ export function fetchDeleteStudent (studentid) {
   }
 }
 
-//edit one student
+//update one student
 export function fetchPutStudent (student){
   return (dispatch) => {
-    axios.put(`/api/students/${student.id}`)
-    .then(result => dispatch(updateStudent(result)))
+    console.log('got to here student.id', student.id)
+    axios.put(`/api/students/${student.id}`, student)
+    .then(result => {
+      dispatch(updateStudent(result.data))
+      console.log(result.data)})
     .catch(err => console.error(`Could not edit student ${student}`, err))
   }
 }

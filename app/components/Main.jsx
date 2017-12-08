@@ -35,7 +35,7 @@ export default class Main extends Component {
             <Route path="/campuses/:campusid" component={SingleCampus}/>
             <Route exact path="/students" component={Students} />
             <Route path="/students/:studentid" component={SingleStudent}/>
-            <Route path="/addstudent" render={() => <AddStudentForm/>} />
+            <Route path="/addstudent" component={AddStudentForm} />
             <Route path="/addcampus" render={() => <AddCampusForm/>} />
             <Route path="*" render={()=>(<h3>That page doesn't exist!</h3>)}/>
           </Switch>

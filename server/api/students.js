@@ -58,7 +58,11 @@ studentsRouter.put('/:studentid', (req, res, next) => {
 		returning: true,
 		plain: true
 	})
-	.then(result => res.send(result[1]))
+	.spread((affected, updatedStudent) => {
+		console.log('reqbody',req.body)
+		return updatedStudent.setCampus(parseInt(req.body.campusId, 10))
+		.then( () => res.send(updatedStudent))
+	})
 	.catch(next)
 })
 
