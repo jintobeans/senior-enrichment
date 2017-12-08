@@ -61,7 +61,18 @@ studentsRouter.put('/:studentid', (req, res, next) => {
 	.spread((affected, updatedStudent) => {
 		console.log('reqbody',req.body)
 		return updatedStudent.setCampus(parseInt(req.body.campusId, 10))
-		.then( () => res.send(updatedStudent))
+	.then(() => {
+		return Students.findOne({
+			where: {
+				id: req.params.studentid
+			},
+			include: [{
+				model: Campuses,
+				as: 'Campus'
+			}]
+		})
+	})
+	.then(student => res.send(student))
 	})
 	.catch(next)
 })

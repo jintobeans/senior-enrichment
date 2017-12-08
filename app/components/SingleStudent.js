@@ -11,25 +11,27 @@ class SingleStudent extends Component{
         firstName: '',
         lastName: '',
         email: '',
-        gpa: 0.0,
+        gpa: 1.1,
         CampusId: 0
       }
     }
     this.updateStudent = this.updateStudent.bind(this)
   }
 
-  // componentDidMount (){
-  //   console.log('props',this.props.student)
-  //   this.setState({
-  //     student: this.props.student
-  //   })
-  //   console.log('state', this.state)
-  // }
+  componentDidMount (){
+    this.setState({
+      student: this.props.student
+    })
+    console.log('props1',this.props)
+    console.log('state1',this.state)
+  }
 
   componentWillReceiveProps (newProps, oldProps) {
     this.setState({
       student: newProps.student
     })
+    console.log('props2',this.props)
+    console.log('state2',this.state)
   }
 
   updateStudent(studentUpdateObj){
@@ -87,6 +89,10 @@ class SingleStudent extends Component{
             className="input"
             name="gpa"
             value={student.gpa}
+            type="number"
+            min="0"
+            max="4"
+            step="0.1"
             onChange={e => this.updateStudent({gpa: e.target.value})} />
           </li>
           <li>
@@ -94,7 +100,7 @@ class SingleStudent extends Component{
             <input
             className="input"
             name="CampusId"
-            value={student.campusId}
+            value={student.CampusId}
             onChange={e => this.updateStudent({CampusId: e.target.value})} />
           </li>
         </ul>

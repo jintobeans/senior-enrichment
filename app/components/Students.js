@@ -7,7 +7,7 @@ import store from '../store'
 import {connect} from 'react-redux'
 
 function Students (props) {
-
+  console.log('in STudents', props)
     return (
       <div>
         <h3>
@@ -24,7 +24,6 @@ function Students (props) {
               <th>Campus</th>
             </tr>
         {props.students.map((student) => {
-          console.log('student:', student)
           return (
             <StudentItem key={student.id} student={student} />
           )
