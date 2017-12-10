@@ -3,7 +3,7 @@ const Campuses = require('../db/models').Campuses
 const Students = require('../db/models').Students
 module.exports = campusRouter
 
-//GET api/campuses
+//GET api/campuses gets all campuses
 campusRouter.get('/', (req, res, next) => {
 	Campuses.findAll()
 	.then(campuses => res.send(campuses))
@@ -11,6 +11,7 @@ campusRouter.get('/', (req, res, next) => {
 })
 
 //GET /api/campuses/:campusid
+//get one campus and
 //find all students that have that campus ID
 campusRouter.get('/:campusid', (req, res, next) => {
 	let campusid = req.params.campusid;
@@ -31,8 +32,6 @@ campusRouter.get('/:campusid', (req, res, next) => {
 		})
 	])
 	.then((results) => {
-		// console.log('promise', results)
-		// console.log('campus', results[0])
 		res.send({
 			campus: results[0],
 			students: results[1]
@@ -41,7 +40,7 @@ campusRouter.get('/:campusid', (req, res, next) => {
 	.catch(next)
 	})
 
-	//POST /api/campuses
+	//POST one new campus /api/campuses
 campusRouter.post('/', (req, res, next) => {
 	Campuses.findOrCreate({
 		where: {
@@ -57,7 +56,7 @@ campusRouter.post('/', (req, res, next) => {
 	.catch(next)
 })
 
-//PUT /api/campuses/:campusid
+//PUT edit one campus /api/campuses/:campusid
 campusRouter.put('/:campusid', (req, res, next) => {
 	Campuses.update(req.body, {
 		where: {
@@ -72,7 +71,7 @@ campusRouter.put('/:campusid', (req, res, next) => {
 	.catch(next)
 })
 
-//DELETE /api/campuses/:campusid
+//DELETE one campus /api/campuses/:campusid
 campusRouter.delete('/:campusid', (req, res, next) => {
 	Campuses.findById(req.params.campusid)
 	.then(campus => {

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import axios from 'axios'
 import { NavLink } from 'react-router-dom';
 import store from '../store';
 import {connect} from 'react-redux';
@@ -52,7 +51,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = {fetchDeleteCampus};
+const mapDispatchToProps = {fetchDeleteCampus, fetchCampuses};
 
 const CampusesContainer = connect(mapStateToProps, mapDispatchToProps)(Campuses)
 

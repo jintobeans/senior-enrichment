@@ -13,7 +13,3 @@ render(
   document.getElementById('main')
 )
 
-//REDUX
-// <Provider store={store}>
-// </Provider>,
-

@@ -4,7 +4,7 @@ const Students = require('../db/models').Students
 const Campuses = require('../db/models').Campuses
 module.exports = studentsRouter
 
-//GET /api/students
+//GET all students /api/students
 studentsRouter.get('/', (req, res, next) => {
 	Students.findAll({
 		include: [{
@@ -17,7 +17,7 @@ studentsRouter.get('/', (req, res, next) => {
 	.catch(next)
 	})
 
-	//GET /api/students/:studentid
+	//GET one student /api/students/:studentid
 studentsRouter.get('/:studentid', (req, res, next) => {
 	let studentid = req.params.studentid;
 	Students.findOne({
@@ -29,28 +29,37 @@ studentsRouter.get('/:studentid', (req, res, next) => {
 	.catch(next)
 		})
 
-//POST /api/students
+//POST add one student /api/students
 studentsRouter.post('/', (req, res, next) => {
 	Students.findOrCreate({
 		where: {
 			firstName: req.body.firstName,
 			lastName: req.body.lastName,
 			email: req.body.email,
-			gpa: req.body.gpa
+			gpa: req.body.gpa,
 		}
 	})
 	.spread((student, created) => {
 		if (created) {
 			return student.setCampus(parseInt(req.body.campusId, 10))
-			.then(() =>
-			res.json(student))
+			.then(() => {
+				return Students.findOne({
+				where: {
+					id: student.id
+				},
+				include: [{
+					model: Campuses,
+					as: 'Campus'
+				}]
+			})})
+			.then(newStud => res.json(newStud))
 		}
 		else {res.json('Student already exists!')}
 	})
 	.catch(next)
 })
 
-//PUT /api/students/:studentid
+//PUT edit one student /api/students/:studentid
 studentsRouter.put('/:studentid', (req, res, next) => {
 	Students.update(req.body, {
 		where: {
@@ -60,7 +69,6 @@ studentsRouter.put('/:studentid', (req, res, next) => {
 		plain: true
 	})
 	.spread((affected, updatedStudent) => {
-		console.log('reqbody',req.body)
 		return updatedStudent.setCampus(parseInt(req.body.campusId, 10))
 	.then(() => {
 		return Students.findOne({
@@ -78,7 +86,7 @@ studentsRouter.put('/:studentid', (req, res, next) => {
 	.catch(next)
 })
 
-//DELETE /api/students/:studentid
+//DELETE one student /api/students/:studentid
 studentsRouter.delete('/:studentid', (req, res, next) => {
 	Students.findById(req.params.studentid)
 	.then( student => {

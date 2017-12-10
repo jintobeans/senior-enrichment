@@ -6,8 +6,8 @@ import { fetchPutCampus } from '../reducers/campuses';
 import { fetchPutStudent } from '../reducers/students';
 
 class SingleCampus extends Component {
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state = {
       campus: {},
       students: []
@@ -20,10 +20,23 @@ class SingleCampus extends Component {
     axios.get(`/api/campuses/${this.props.match.params.campusid}`)
     .then(res => res.data)
     .then(results => {
-      this.setState(results)
+      this.setState(results);
+      console.log('state', this.state)
     })
-
   }
+  // componentWillReceiveProps(nextProps){
+
+    // let theCampus = nextProps.campuses.find((campus) => {
+    //   return +campus.id === +nextProps.match.params.campusid
+    // })
+    // let campusStudents = nextProps.students.filter((student) => {
+    //   return +student.CampusId === +nextProps.match.params.campusid
+    // })
+    // this.setState({
+    //   campus: theCampus,
+    //   students: campusStudents
+    // })
+  // }
 
   updateCampus(campusUpdateObj){
     //change the state
@@ -54,6 +67,7 @@ class SingleCampus extends Component {
         <h2>
         Edit information for {campus.name}
         </h2>
+        <img src={campus.imageURL} />
         <ul>
           <li>
             Campus Name:
@@ -76,6 +90,7 @@ class SingleCampus extends Component {
           <li>
             Campus Description:
             <input
+            type="text"
             className="input"
             name="description"
             value={campus.description}
@@ -123,11 +138,13 @@ class SingleCampus extends Component {
   }
 }
 
-const mapStateToProps = ({campuses}, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    campuses
+    campuses: state.campuses,
+    students: state.students
   }
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     putCampus: (campus) => {

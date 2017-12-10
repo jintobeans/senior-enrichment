@@ -8,5 +8,4 @@ let rootReducer = combineReducers({
   students
 })
 
-
 export default rootReducer

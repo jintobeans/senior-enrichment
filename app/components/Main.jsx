@@ -12,9 +12,10 @@ import AddCampusForm from './AddCampusForm'
 import {fetchCampuses} from '../reducers/campuses';
 import {fetchStudents} from '../reducers/students';
 
-
-//front end routes????
 export default class Main extends Component {
+  constructor(){
+    super()
+  }
 
   componentDidMount() {
     store.dispatch(fetchCampuses());
@@ -45,14 +46,3 @@ export default class Main extends Component {
     )
   }
 }
-
-// <main>
-// <BrowserRouter>
-//   <Switch>
-//     <Route path="/" component={Home}/>
-//   </Switch>
-// </BrowserRouter>
-// </main>
-
-
-// /<Route path="/students/:studentid" component={SingleStudent}/>

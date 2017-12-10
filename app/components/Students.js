@@ -6,7 +6,12 @@ import AddStudentForm from './AddStudentForm';
 import store from '../store'
 import {connect} from 'react-redux'
 
-function Students (props) {
+class Students extends Component {
+  constructor(props){
+    super(props)
+  }
+
+  render(){
     return (
       <div>
         <h3>
@@ -22,7 +27,7 @@ function Students (props) {
               <th>Full Name</th>
               <th>Campus</th>
             </tr>
-        {props.students.map((student) => {
+        {this.props.students.map((student) => {
           return (
             <StudentItem key={student.id} student={student} />
           )
@@ -31,6 +36,7 @@ function Students (props) {
         </table>
       </div>
     )
+  }
 }
 
 const mapStateToProps = (state) => {

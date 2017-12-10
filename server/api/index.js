@@ -12,13 +12,8 @@ apiRouter.get('/hello', (req, res) => res.send({hello: 'world'}))
 apiRouter.use('/students', studentsRouter)
 apiRouter.use('/campuses', campusesRouter)
 
-// apiRouter.get('/', (req, res) => {
-// 	res.redirect('/')
-// })
 apiRouter.use((req, res, next) => {
 	res.status(404).send('Not found!!!');
 })
-
-// You can put all routes in this file; HOWEVER, this file should almost be like a table of contents for the routers you create
 
 module.exports = apiRouter;

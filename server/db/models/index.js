@@ -15,7 +15,7 @@ Students.belongsTo(Campuses, {as: 'Campus'});
 Campuses.hasMany(Students, {
 	foreignKey: 'CampusId',
 	onDelete: 'cascade',
-	hooks: true}); //is this necessary...
+	hooks: true});
 
 module.exports = {
 	db,
