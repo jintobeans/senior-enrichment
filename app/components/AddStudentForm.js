@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
 import {fetchCreateStudent} from '../reducers/students'
 import {connect} from 'react-redux'
+import {Redirect} from 'react-router-dom'
 
 class AddStudentForm extends Component {
  constructor(){
    super()
+   this.state = {
+     redirect: false
+   }
    this.submitStudent = this.submitStudent.bind(this)
  }
 
@@ -16,6 +20,9 @@ class AddStudentForm extends Component {
     email: event.target.email.value,
     gpa: +event.target.gpa.value,
     campusId: +event.target.campus.value
+  })
+  this.setState({
+    redirect: true
   })
  }
 
@@ -64,6 +71,8 @@ class AddStudentForm extends Component {
         </select><br />
         <input type="submit" />
       </form>
+      {this.state.redirect &&
+        <Redirect to="/students" /> }
     </div>
   )
  }

@@ -11,10 +11,6 @@ class Campuses extends Component {
     this.deleteHandler = this.deleteHandler.bind(this)
     }
 
-//  componentDidMount() {
-//     store.dispatch(fetchCampuses());
-//   }
-
   render(){
     return (
       <div>
@@ -24,33 +20,21 @@ class Campuses extends Component {
         <NavLink to="/addcampus" >
           <button>Add Campus</button>
         </NavLink>
-        <table>
-          <tbody>
-            <tr>
-              <th>Campus Id</th>
-              <th>Campus Name</th>
-            </tr>
+        <div id="campuses">
         {this.props.campuses.map((campus) => {
           return (
-            <tr key={campus.id}>
-              <th>
-                {campus.id}
-              </th>
-              <th>
-                <NavLink to={`/campuses/${campus.id}`}>
+            <div key={campus.id}>
+              <NavLink to={`/campuses/${campus.id}`}>
                 <h4>{campus.name}</h4>
-                </NavLink>
-              </th>
-              <th>
+                <img src={campus.imageURL} />
+              </NavLink>
               <button value={campus.id} onClick={this.deleteHandler}>
-              delete campus
+                delete campus
               </button>
-            </th>
-            </tr>
+            </div>
           )
         })}
-          </tbody>
-        </table>
+        </div>
       </div>
     )
   }

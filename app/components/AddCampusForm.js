@@ -1,11 +1,16 @@
 import React, {Component} from 'react'
 import { fetchCreateCampus } from '../reducers/campuses';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom'
 
 class AddCampusForm extends Component {
  constructor(){
    super()
+   this.state = {
+    redirect: false
+  }
    this.submitCampus = this.submitCampus.bind(this)
+
  }
  submitCampus(event){
     event.preventDefault()
@@ -13,6 +18,9 @@ class AddCampusForm extends Component {
       name: event.target.name.value,
       imageURL: event.target.imageURL.value,
       description: event.target.description.value
+    })
+    this.setState({
+      redirect: true
     })
  }
 
@@ -43,6 +51,9 @@ class AddCampusForm extends Component {
         <br />
         <input type="submit" />
       </form>
+      {this.state.redirect &&
+        <Redirect to="/campuses" />
+      }
   </div>
   )
  }
