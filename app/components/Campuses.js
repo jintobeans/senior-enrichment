@@ -5,8 +5,6 @@ import store from '../store';
 import {connect} from 'react-redux';
 import {fetchCampuses, fetchDeleteCampus} from '../reducers/campuses';
 
-
-
 class Campuses extends Component {
   constructor(props) {
     super(props)
@@ -59,12 +57,9 @@ class Campuses extends Component {
   deleteHandler(event){
     const { fetchDeleteCampus } = this.props;
     const campusid = event.target.value
-    console.log(campusid)
     event.stopPropagation();
     fetchDeleteCampus(+campusid)
   }
-
-
 }
 
 const mapStateToProps = (state, ownProps) => {

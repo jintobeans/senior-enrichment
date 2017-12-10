@@ -30,7 +30,7 @@ const Students = db.define('students', {
 		}
 	},
 	gpa: {
-		type: Sequelize.FLOAT(1,1),
+		type: Sequelize.FLOAT(1, 1),
 	}
 }, {
 	getterMethods: {

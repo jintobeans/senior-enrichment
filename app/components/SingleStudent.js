@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import {fetchPutStudent } from '../reducers/students'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 class SingleStudent extends Component{
   constructor(props){
@@ -12,7 +13,11 @@ class SingleStudent extends Component{
         lastName: '',
         email: '',
         gpa: 1.1,
-        CampusId: 0
+        CampusId: 0,
+        Campus: {
+          name: 'campus',
+          id: '1'
+        }
       }
     }
     this.updateStudent = this.updateStudent.bind(this)
@@ -48,7 +53,9 @@ class SingleStudent extends Component{
   }
 
   render() {
+
     const {student} = this.state
+    console.log('studentinrender', student)
     return (
       <div>
         <h2>'Edit information for {student.fullName}'</h2>
@@ -91,23 +98,37 @@ class SingleStudent extends Component{
           </li>
           <li>
             CampusID:
-            <input
-            className="input"
-            name="CampusId"
-            value={student.CampusId}
-            onChange={e => this.updateStudent({CampusId: e.target.value})} />
+            <select
+              name="CampusId"
+              defaultValue="default"
+              onChange={e => this.updateStudent({CampusId: e.target.value})}
+              >
+              <option value="default">Change Campus</option>
+              {this.props.campuses.map((eachCampus) => {
+                return (
+                  <option key={eachCampus.id} value={`${eachCampus.id}`}>{eachCampus.name}</option>
+                )
+              })}
+            </select>
           </li>
         </ul>
+        <h3>
+        This student's campus is: <br />
+        <Link to={`/campuses/${student.CampusId}`}>
+        {student.Campus.name}
+        </Link>
+        </h3>
       </div>
     )
   }
 
 }
 
-const mapStateToProps = ({students}, ownProps) => {
+const mapStateToProps = ({students, campuses}, ownProps) => {
   const student = students.find(theStudent => theStudent.id === +ownProps.match.params.studentid)
   return {
-    student
+    student,
+    campuses
   }
 };
 
@@ -121,3 +142,10 @@ const mapDispatchToProps = (dispatch) => {
 
 const SingleStudentContainer = connect(mapStateToProps, mapDispatchToProps)(SingleStudent)
 export default SingleStudentContainer;
+
+
+// <input
+// className="input"
+// name="CampusId"
+// value={student.CampusId}
+// onChange={e => this.updateStudent({CampusId: e.target.value})} />

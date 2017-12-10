@@ -41,7 +41,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = null;
 
-
 const StudentsContainer = connect(mapStateToProps, mapDispatchToProps)(Students)
 
 export default StudentsContainer;

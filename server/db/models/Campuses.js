@@ -18,7 +18,7 @@ const Campuses = db.define('campuses', {
 	},
 	imageURL: {
 		type: Sequelize.STRING,
-		defaultValue: ''
+		defaultValue: 'https://earth.jpl.nasa.gov/internal_resources/403/'
 	},
 	description: {
 		type: Sequelize.TEXT

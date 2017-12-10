@@ -13,7 +13,6 @@ studentsRouter.get('/', (req, res, next) => {
 		}]
 	})
 	.then(students => {
-		console.log('students', students)
 		res.send(students)})
 	.catch(next)
 	})

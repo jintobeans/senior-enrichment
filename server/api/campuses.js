@@ -14,12 +14,30 @@ campusRouter.get('/', (req, res, next) => {
 //find all students that have that campus ID
 campusRouter.get('/:campusid', (req, res, next) => {
 	let campusid = req.params.campusid;
-	Students.findAll({
+	Promise.all([
+		Campuses.findOne({
 		where: {
-			CampusId: campusid
+			id: campusid
 		}
+		}),
+		Students.findAll({
+			where: {
+				CampusId: campusid
+			},
+			include: [{
+				model: Campuses,
+				as: 'Campus'
+			}]
+		})
+	])
+	.then((results) => {
+		// console.log('promise', results)
+		// console.log('campus', results[0])
+		res.send({
+			campus: results[0],
+			students: results[1]
+		})
 	})
-	.then(students => res.send(students))
 	.catch(next)
 	})
 
