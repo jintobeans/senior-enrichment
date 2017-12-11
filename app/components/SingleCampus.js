@@ -108,6 +108,7 @@ class SingleCampus extends Component {
           </li>
         </ul>
         <h2>Students at {campus.name} campus</h2>
+
         <table>
           <tbody>
             <tr>
@@ -168,3 +169,16 @@ const mapDispatchToProps = (dispatch) => {
 const SingleCampusContainer = connect(mapStateToProps, mapDispatchToProps)(SingleCampus)
 
 export default SingleCampusContainer;
+
+
+          // <select
+          //   name="addstudent"
+          //   defaultValue="Add Student" >
+          //     <option>Add Student
+          //     </option>
+          //   {this.props.students.map((student) => {
+          //     return (
+          //       <option key={student.id} value={`${student.id}`}>{student.name}</option>
+          //     )
+          //   })}
+          // </select>

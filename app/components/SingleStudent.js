@@ -55,10 +55,9 @@ class SingleStudent extends Component{
   render() {
 
     const {student} = this.state
-    console.log('studentinrender', student)
     return (
       <div>
-        <h2>'Edit information for {student.fullName}'</h2>
+        <h2>Edit information for {student.fullName}</h2>
         <ul>
           <li>
             First Name:
@@ -113,7 +112,7 @@ class SingleStudent extends Component{
           </li>
         </ul>
         <h3>
-        This student's campus is:{' '}
+        {student.fullName}'s campus is:{' '}
         <Link to={`/campuses/${student.CampusId}`}>
         {student.Campus.name}
         </Link>
