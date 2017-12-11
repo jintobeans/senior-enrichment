@@ -17,6 +17,7 @@ class SingleCampus extends Component {
   }
 
   componentDidMount(){
+    // this.setState(this.props)
     axios.get(`/api/campuses/${this.props.match.params.campusid}`)
     .then(res => res.data)
     .then(results => {
