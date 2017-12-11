@@ -17,7 +17,6 @@ class SingleCampus extends Component {
   }
 
   componentDidMount(){
-    // this.setState(this.props)
     axios.get(`/api/campuses/${this.props.match.params.campusid}`)
     .then(res => res.data)
     .then(results => {
@@ -27,16 +26,16 @@ class SingleCampus extends Component {
   }
   // componentWillReceiveProps(nextProps){
 
-    // let theCampus = nextProps.campuses.find((campus) => {
-    //   return +campus.id === +nextProps.match.params.campusid
-    // })
-    // let campusStudents = nextProps.students.filter((student) => {
-    //   return +student.CampusId === +nextProps.match.params.campusid
-    // })
-    // this.setState({
-    //   campus: theCampus,
-    //   students: campusStudents
-    // })
+  //   let theCampus = nextProps.campuses.find((campus) => {
+  //     return +campus.id === +nextProps.match.params.campusid
+  //   })
+  //   let campusStudents = nextProps.students.filter((student) => {
+  //     return +student.CampusId === +nextProps.match.params.campusid
+  //   })
+  //   this.setState({
+  //     campus: theCampus,
+  //     students: campusStudents
+  //   })
   // }
 
   updateCampus(campusUpdateObj){
@@ -59,6 +58,12 @@ class SingleCampus extends Component {
       campusId: +e.target.value,
       id: +e.target.name
     })
+    let updatedStudents = this.props.students.filter((student) => {
+      return student.CampusId === this.state.campus.id
+    })
+    this.setState({
+      students: Object.assign(updatedStudents)
+    })// this is glitchy - not rendering the removed student when remove student? bc state students?
   }
 
   render(){
@@ -68,6 +73,9 @@ class SingleCampus extends Component {
         <h2>
         Edit information for {campus.name}
         </h2>
+        <h4>
+        {campus.description}
+        </h4>
         <img src={campus.imageURL} />
         <ul>
           <li>

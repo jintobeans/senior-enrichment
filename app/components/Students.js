@@ -13,16 +13,16 @@ class Students extends Component {
 
   render(){
     return (
-      <div>
-        <h3>
+      <div className="students">
+        <h2>
         Students
-        </h3>
+        </h2>
         <NavLink to="/addstudent" >
           <button>Add Student</button>
         </NavLink>
         <table>
           <tbody>
-            <tr>
+            <tr className="tableheaders">
               <th>Student Id</th>
               <th>Full Name</th>
               <th>Campus</th>

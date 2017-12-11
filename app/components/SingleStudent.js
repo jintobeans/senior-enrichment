@@ -113,7 +113,7 @@ class SingleStudent extends Component{
           </li>
         </ul>
         <h3>
-        This student's campus is: <br />
+        This student's campus is:{' '}
         <Link to={`/campuses/${student.CampusId}`}>
         {student.Campus.name}
         </Link>
@@ -142,10 +142,3 @@ const mapDispatchToProps = (dispatch) => {
 
 const SingleStudentContainer = connect(mapStateToProps, mapDispatchToProps)(SingleStudent)
 export default SingleStudentContainer;
-
-
-// <input
-// className="input"
-// name="CampusId"
-// value={student.CampusId}
-// onChange={e => this.updateStudent({CampusId: e.target.value})} />

@@ -6,10 +6,10 @@ export default class Home extends Component {
   }
   render(){
     return (
-      <div>
-        <h3>
+      <div class="container">
+        <h2>
           Welcome to the Margaret Hamilton Interplanetary Academy of JavaScript.
-        </h3>
+        </h2>
       </div>
     )
   }

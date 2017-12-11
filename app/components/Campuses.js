@@ -12,23 +12,24 @@ class Campuses extends Component {
 
   render(){
     return (
-      <div>
-        <h3>
+      <div className="campuses">
+        <h2>
         Campuses
-        </h3>
+        </h2>
         <NavLink to="/addcampus" >
           <button>Add Campus</button>
         </NavLink>
-        <div id="campuses">
+        <div id="campusesbox">
         {this.props.campuses.map((campus) => {
           return (
-            <div key={campus.id}>
+            <div key={campus.id} className="campus">
               <NavLink to={`/campuses/${campus.id}`}>
                 <h4>{campus.name}</h4>
-                <img src={campus.imageURL} />
+                <img className="campusimage" src={campus.imageURL} />
               </NavLink>
+              <br />
               <button value={campus.id} onClick={this.deleteHandler}>
-                delete campus
+                delete this campus and its students
               </button>
             </div>
           )

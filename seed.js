@@ -30,6 +30,18 @@ const campuses = [{
   name: 'Lyon',
   imageURL: 'https://i.pinimg.com/736x/f8/1a/2c/f81a2c3efa06034964da81ef4ce981ed--holiday-destinations-lyon.jpg',
   description: 'Welcome to Lyon'
+}, {
+  name: 'Las Vegas',
+  imageURL: 'https://pbs.twimg.com/profile_images/627970847211307008/Rl54n74j_400x400.jpg',
+  description: 'Welcome to Vegas'
+}, {
+  name: 'Anchorage',
+  imageURL: 'https://static-s.aa-cdn.net/img/gp/20600001744590/hLX5nd2eNokeO0ooRe0VaQ-WYqi-j-xoCh6tlzamnb1Q93Lp97LD1ajFzVHZtytI-6s=w300?v=1',
+  description: 'Welcome to Anchorage'
+}, {
+  name: 'London',
+  imageURL: 'http://assets.emeraldstreet.com/app/uploads/2016/10/21155552/emst2_web_londonnight_v1-256x256.jpg',
+  description: 'Welcome to London'
 }];
 
 const students = [{
@@ -104,6 +116,48 @@ const students = [{
   email: 'kenobi@jedi.com',
   gpa: '3.8',
   CampusId: 5
+}, {
+  firstName: 'Angelina',
+  lastName: 'Jolie',
+  email: 'angel@jo.com',
+  gpa: '3.8',
+  CampusId: 6
+}, {
+  firstName: 'Brad',
+  lastName: 'Pitt',
+  email: 'pitt@brad.com',
+  gpa: '3.7',
+  CampusId: 6
+}, {
+  firstName: 'Barack',
+  lastName: 'Obama',
+  email: 'obama@wh.com',
+  gpa: '3.0',
+  CampusId: 7
+}, {
+  firstName: 'Michelle',
+  lastName: 'Obama',
+  email: 'obama@michelle.com',
+  gpa: '3.8',
+  CampusId: 7
+}, {
+  firstName: 'Peter',
+  lastName: 'Pan',
+  email: 'panny@peter.com',
+  gpa: '1.5',
+  CampusId: 8
+}, {
+  firstName: 'Wendy',
+  lastName: 'Idkmylastname',
+  email: 'wendy@wendy.com',
+  gpa: '2.8',
+  CampusId: 8
+}, {
+  firstName: 'Captain',
+  lastName: 'Hook',
+  email: 'hook@hook.com',
+  gpa: '1.8',
+  CampusId: 8
 }
 ]
 
